@@ -1,8 +1,10 @@
 class ZFS
 
-  def self.list
+  def self.list(type = :filesystem)
+
     fs = []
-    IO.popen("zfs list -H") do |f|
+
+    IO.popen("zfs list -H -t #{type}") do |f|
       i = 0
       while l = f.gets do 
         c = l.chomp.split
@@ -17,6 +19,24 @@ class ZFS
       end
     end
     fs
+
+  end
+
+  def self.snap(zf, name = nil)
+
+    name = name ? name : DateTime.now.to_s
+    IO.popen("zfs snapshot #{zf}@#{name}") do |f|
+    end
+
+  end
+
+  def self.clone(snap, zf)
+
+    #Think on this for a bit need pool name? 
+
+    IO.popen("zfs #{snap} #{zf}") do |f|
+    end
+
   end
   
 end
