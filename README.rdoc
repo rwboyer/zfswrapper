@@ -1,0 +1,38 @@
+= ZFSwrapper classes for ZFS administration, a simple web UI, and RESTapi?
+
+== Overview
+
+Beginnings of ZFS administration wrapper classes to manipulate ZFS filesystems, storage pools, snapshots, etc. I have spent all of 5 minutes on this so far but hopefully it will evolve into a useful web UI w/ authentication, a REST API for webservices and integration into other management frameworks, etc.
+The main purpose is to have a functional snapshot, clone, rollback, and promote interface for iSCSI ZFS volumes that normal humans can use.
+
+RB 
+
+== Features
+
+* ZP - zpool admin and status class
+* ZFS - ZFS filesystem and volume class
+* Simple and incomplete Sinatra UI
+* Simple and incomplete Sinatra REST API
+
+== Dependencies
+
+  sinatra
+  haml
+
+  obviously a host that supports ZFS (BSD's, Solaris's, OS X - sort of)
+
+== Setup
+
+None so far...
+  $ rackup
+
+And visit: http://localhost:9292
+
+
+== Meta
+
+Written by RW Boyer
+
+http://photo.rwboyer.com
+http://rwboyer.github.com
+
