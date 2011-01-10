@@ -52,6 +52,11 @@ class ZFS
     x
 
   end
+
+  def self.destroy(zf)
+    IO.popen("zfs destroy -R #{zf}") do |f|
+    end
+  end
   
 end
 

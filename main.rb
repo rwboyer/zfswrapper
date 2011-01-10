@@ -68,6 +68,11 @@ class ZFS_web < Sinatra::Base
     redirect '/'
   end
 
+  get '/destroy/*' do
+    ZFS.destroy(params['splat'][0])
+    redirect '/snapshots'
+  end
+
 	### Admin
 
 	get '/auth' do
