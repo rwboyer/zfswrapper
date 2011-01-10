@@ -34,7 +34,7 @@ class ZFS
 
     #Think on this for a bit need pool name? 
 
-    IO.popen("zfs #{snap} #{zf}") do |f|
+    IO.popen("zfs clone #{snap} #{zf}") do |f|
     end
 
   end

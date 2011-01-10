@@ -1,0 +1,6 @@
+%h2= "Clone #{snap}"
+%form{:action => "/clone/#{snap}", :method => "post"}
+	%input{:type => "clone", :name => "clone"}
+	%input{:type => "submit", :value => "Clone"}
+:javascript
+	document.forms[0].password.focus()

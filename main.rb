@@ -39,10 +39,33 @@ class ZFS_web < Sinatra::Base
 		haml :index, :locals => { :zfs => zfs }, :layout => :default
 	end
 
+  get '/snapshots' do
+    zfs = ZFS.list :snapshot
+    haml :snapshots, :locals => { :zfs => zfs}, :layout => :default
+  end
+
   get '/props/*' do
     zf = params['splat'][0]
     zp = ZFS.prop(zf)
     haml :props, :locals => { :zprops => zp[zf]}, :layout =>:default
+  end
+
+  get '/snap/*' do
+    zf = params['splat'][0]
+    ZFS.snap(zf)
+    redirect '/snapshots'
+  end
+
+  get '/clone/*' do
+    sn = params['splat'][0]
+    haml :clone, :locals => { :snap => sn}, :layout => :default
+  end
+
+  post '/clone/*' do
+    puts sn = params['splat'][0]
+    puts newname = params[:clone]
+    ZFS.clone(sn, sn.split(/\/|@/)[0] + "/" + newname)
+    redirect '/'
   end
 
 	### Admin
