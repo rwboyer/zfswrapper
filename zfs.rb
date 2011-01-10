@@ -38,6 +38,20 @@ class ZFS
     end
 
   end
+
+  def self.prop(zf = "")
+
+    x = Hash.new
+    IO.popen("zfs get -H all #{zf}") do |f|
+      while l = f.gets do
+        c = l.chomp.split
+        x[c[0]] ||= Hash.new
+        x[c[0]][c[1]] = c[2]
+      end
+    end
+    x
+
+  end
   
 end
 
