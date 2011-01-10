@@ -1,8 +1,6 @@
 
 %w( rubygems date sinatra/base haml ).each { |f| require f }
 
-#$LOAD_PATH.unshift File.dirname(__FILE__) + '/vendor/sequel'
-
 class ZFS_web < Sinatra::Base
 
 	configure do
@@ -24,7 +22,7 @@ class ZFS_web < Sinatra::Base
 
 	helpers do
 		def admin?
-			request.cookies[Blog.admin_cookie_key] == Blog.admin_cookie_value
+			request.cookies["test"] == '51d6d976913ace58'
 		end
 
 		def auth
@@ -32,17 +30,20 @@ class ZFS_web < Sinatra::Base
 		end
 	end
 
-	layout 'layout'
+	#layout 'default'
 
 	### Public
 
 	get '/' do
 		zfs = ZFS.list
-		haml :index, :locals => { :zfs => zfs }, :layout => false
+		haml :index, :locals => { :zfs => zfs }, :layout => :default
 	end
 
-	get '/post' do
-	end
+  get '/props/*' do
+    zf = params['splat'][0]
+    zp = ZFS.prop(zf)
+    haml :props, :locals => { :zprops => zp[zf]}, :layout =>:default
+  end
 
 	### Admin
 
