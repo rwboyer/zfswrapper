@@ -1,0 +1,14 @@
+---
+layout: default
+title: Robert W Boyer
+---
+
+#home
+	%h1 Posts
+	%ul.posts
+		- site.posts.sort.reverse.each do |post| 
+			%li.li
+				%span= ( post.date.strftime("%d %b %Y") )
+				= link_to post.title, post.url
+  
+  
