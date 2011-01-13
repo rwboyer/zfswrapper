@@ -1,10 +1,12 @@
 #home
-	%h1 ZFS Filesystems
-	%ul.posts
-		- zfs.each do |zf| 
-			%li.li
-				%span= ( "#{zf[:used]} #{zf[:avail]}" )
-				%a(href="props/#{zf[:name]}")= zf[:name] 
-				%a(href="snap/#{zf[:name]}")= "Make Snapshot"
-  
-  
+  %h1 ZFS Filesystems
+  %table.posts
+    - zfs.each do |zf| 
+      %tr
+        %td= ( "#{zf[:used]} #{zf[:avail]}" )
+        %td
+          %a(href="props/#{zf[:name]}")= zf[:name] 
+        %td
+          %a(href="snap/#{zf[:name]}")= "snapshot"
+  %h1
+    %a(href="/snapshots") Snapshots

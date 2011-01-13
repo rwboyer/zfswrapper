@@ -73,6 +73,11 @@ class ZFS_web < Sinatra::Base
     redirect '/snapshots'
   end
 
+  get '/rollback/*' do
+    ZFS.rollback(params['splat'][0])
+    redirect '/snapshots'
+  end
+
 	### Admin
 
 	get '/auth' do

@@ -53,6 +53,11 @@ class ZFS
 
   end
 
+  def self.rollback(zf)
+    IO.popen("zfs rollback -R #{zf}") do |f|
+    end
+  end
+
   def self.destroy(zf)
     IO.popen("zfs destroy -R #{zf}") do |f|
     end

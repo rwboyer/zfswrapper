@@ -1,11 +1,16 @@
 #home
-	%h1 ZFS Snapshots
-	%ul.posts
-		- zfs.each do |zf| 
-			%li.li
-				%span= ( "#{zf[:used]} #{zf[:avail]}" )
-				%a(href="props/#{zf[:name]}")= zf[:name] 
-				%a(href="clone/#{zf[:name]}")= "Make Clone"
-				%a(href="destroy/#{zf[:name]}")= "Destroy Clone"
+  %h1 ZFS Snapshots
+  %table
+    - zfs.each do |zf| 
+      %tr
+        %td= ( "#{zf[:used]} #{zf[:avail]}" )
+        %td
+          %a(href="props/#{zf[:name]}")= zf[:name] 
+        %td
+          %a(href="clone/#{zf[:name]}")= "clone"
+        %td
+          %a(href="rollback/#{zf[:name]}")= "rollback"
+        %td
+          %a(href="destroy/#{zf[:name]}")= "destroy"
   
   

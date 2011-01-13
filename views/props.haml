@@ -1,9 +1,9 @@
 #home
-	%h1 ZFS Filesystems
-	%ul.posts
-		- zprops.each do |zname, zvalue| 
-			%li.li
-				%span= ( "#{zname}" )
-				= zvalue
+  %h1 ZFS Filesystems
+  %table
+    - zprops.each do |zname, zvalue| 
+      %tr
+        %td= ( "#{zname}" )
+        %td= zvalue
   
   
