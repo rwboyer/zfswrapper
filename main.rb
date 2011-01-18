@@ -39,6 +39,11 @@ class ZFS_web < Sinatra::Base
 		haml :index, :locals => { :zfs => zfs }, :layout => :default
 	end
 
+  get '/volumes' do
+    zfs = ZFS.list :volume
+    haml :vols, :locals => { :zfs => zfs}, :layout => :default
+  end
+
   get '/snapshots' do
     zfs = ZFS.list :snapshot
     haml :snapshots, :locals => { :zfs => zfs}, :layout => :default

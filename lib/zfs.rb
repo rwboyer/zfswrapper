@@ -62,6 +62,16 @@ class ZFS
     IO.popen("zfs destroy -R #{zf}") do |f|
     end
   end
+
+  def self.v_create(zf, size)
+    IO.popen("zfs create -V #{size} #{zf}") do |f|
+    end
+  end
   
+  def self.f_create(zf)
+    IO.popen("zfs create #{zf}") do |f|
+    end
+  end
+
 end
 

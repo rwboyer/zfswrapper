@@ -1,5 +1,5 @@
 #home
-  %h1 ZFS Filesystems
+  %h1 ZFS Volumes
   %table.posts
     - zfs.each do |zf| 
       %tr
@@ -9,5 +9,4 @@
         %td
           %a(href="snap/#{zf[:name]}")= "snapshot"
   %h1
-    %a(href="/volumes") Volumes
     %a(href="/snapshots") Snapshots
